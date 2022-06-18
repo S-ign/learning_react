@@ -1,20 +1,17 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const ExpenseFilter = (props) => {
-  const [year, setYear] = useState('2022')
   const liftYearToExpenses = event => {
-    setYear(() => {
-      return event.target.value
-    })
-    props.onGetYearFromExpenseFilter(year)
+    props.onGetYearFromExpenseFilter(event.target.value)
   }
 
   return (
     <ExpenseFilterStyle>
       <ExpenseFilterControl>
         <label>Filter by year</label>
-        <select onChange={liftYearToExpenses}>
+        <select value={props.selected} onChange={liftYearToExpenses}>
+          <option value='0'>All</option>
           <option value='2022'>2022</option>
           <option value='2021'>2021</option>
           <option value='2020'>2020</option>
