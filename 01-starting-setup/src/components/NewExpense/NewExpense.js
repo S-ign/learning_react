@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
+import AddExpense from './AddExpense'
 import NewExpenseForm from './NewExpenseForm';
 
 const NewExpense = (props) => {
@@ -13,9 +14,25 @@ const NewExpense = (props) => {
     props.onNewExpenses(formData);
   }
 
+  const [formToggle, setFormToggle] = useState("0")
+
+  const toggleFormHandler = toggle => {
+    setFormToggle(toggle)
+  }
+
+  console.log(typeof(formToggle))
+
   return (
     <NewExpenseStyle>
-      <NewExpenseForm onFormSubmit={formSubmitHandler} />
+
+      {formToggle === "0" && (
+        <AddExpense onGetToggleValue={toggleFormHandler} />
+      )}
+
+      {formToggle === "1" && (
+        <NewExpenseForm onGetToggleValue={toggleFormHandler} onFormSubmit={formSubmitHandler} />
+      )}
+
     </NewExpenseStyle>
   )
 };
