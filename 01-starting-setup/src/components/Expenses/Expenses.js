@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ExpenseItem from './ExpenseItem';
 import ExpenseFilter from './ExpenseFilter';
+import ExpensesChart from './ExpensesChart';
 import styled from 'styled-components';
 import Card from '../UI/Card'
 
@@ -14,6 +15,7 @@ const Expenses = (props) => {
   return (
     <AllExpenses>
     <ExpenseFilter selected={year} onGetYearFromExpenseFilter={getYearHandler} />
+    <ExpensesChart expenses={props.expenses} />
     {props.expenses.map((expense) => (
       <ExpenseItem key={expense.id} title={expense.title} amount={expense.amount} date={expense.date} />
     ))}

@@ -20,8 +20,6 @@ const NewExpense = (props) => {
     setFormToggle(toggle)
   }
 
-  console.log(typeof(formToggle))
-
   return (
     <NewExpenseStyle>
 
